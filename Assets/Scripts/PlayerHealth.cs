@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] private int _health;
+    [SerializeField] 
+    private int _health;
+    [SerializeField]
+    private GameObject _heal;
 
     public void HurtPlayer(int damage)
     {
@@ -16,6 +18,14 @@ public class PlayerHealth : MonoBehaviour
         if (_health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Heal"))
+        {
+            _health++;
+            Destroy(other.gameObject);
         }
     }
 }
