@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 621909210186094115}
   - component: {fileID: 245548017905063446}
+  - component: {fileID: 310826291715585287}
   m_Layer: 0
   m_Name: startshot
   m_TagString: Untagged
@@ -46,9 +47,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365d9e9b179c3c54898eb735cd404f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fire: {fileID: 245548017905063447}
-  _startFire: {fileID: 621909210186094115}
-  _endFire: {fileID: 621909209348546119}
+  Bullet: {fileID: 0}
+  Power: 0
+--- !u!54 &310826291715585287
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245548017905063447}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &621909209348546112
 GameObject:
   m_ObjectHideFlags: 0

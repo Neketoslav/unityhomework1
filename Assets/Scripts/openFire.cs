@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class openFire : MonoBehaviour
+public class OpenFire : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _fire;
-    [SerializeField]
-    private Transform _startFire;
-    [SerializeField]
-    private Transform _endFire;
-    void start()
+    public GameObject Bullet;
+    public float Power;
+    void Update()
     {
-        var shot = Instantiate(_fire, _startFire.position, _startFire.rotation);
-        transform.Translate(Vector3.forward * Time.deltaTime);
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject b = Instantiate(Bullet, transform.position, transform.rotation);
+            b.GetComponent<Rigidbody>().AddForce(Vector3.forward * Power, ForceMode.Impulse);
+        }
     }
 }

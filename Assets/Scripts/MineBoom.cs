@@ -11,31 +11,32 @@ public class MineBoom : MonoBehaviour
     [SerializeField]
     private Transform _boomhere;
     private GameObject boom;
-   
 
     private void OnTriggerEnter(Collider other)
      {
-
         if (other.gameObject.CompareTag("Enemy"))
          {
-            boom = Instantiate(_explos, _boomhere.position, _boomhere.rotation);
+            Instantiate(_explos, _boomhere.position, _boomhere.rotation);
             var enemy = other.GetComponent<ZombieHealth>();
              enemy.Hurt(_damage);
-             Destroy(gameObject);
-            
+            Destroy(gameObject);
+            Invoke("Test", 5f);
         }
          else if (other.gameObject.CompareTag("Player"))
          {
-             var player = other.GetComponent<PlayerHealth>();
+            Instantiate(_explos, _boomhere.position, _boomhere.rotation);
+            var player = other.GetComponent<PlayerHealth>();
              player.HurtPlayer(_damage);
-             Destroy(gameObject);
+            Destroy(gameObject);
+            Invoke("Test", 5f);
         }
         
-        Invoke("Test", 5f);
+        
     }
     private void Test()
     {
-        Destroy(boom);
+        if (boom != null)
+            Destroy(boom);
         print("test");
     }
 }

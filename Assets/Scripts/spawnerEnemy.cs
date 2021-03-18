@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnerEnemy : MonoBehaviour
+public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject _zobmie;
