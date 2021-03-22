@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class OpenFire : MonoBehaviour
 {
-    public GameObject Bullet;
-    public float Power;
+    [SerializeField]
+    private GameObject _bullet;
+    [SerializeField]
+    private Transform _pointStart;
+    [SerializeField]
+    private float _power = 20f;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject b = Instantiate(Bullet, transform.position, transform.rotation);
-            b.GetComponent<Rigidbody>().AddForce(Vector3.forward * Power, ForceMode.Impulse);
+            GameObject b = Instantiate(_bullet, transform.position, transform.rotation);
+            GetComponent<Rigidbody>().AddForce(Vector3.forward * _power, ForceMode.Impulse);
         }
     }
 }

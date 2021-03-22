@@ -7,9 +7,13 @@ public class Turret : MonoBehaviour
     [SerializeField]
     private Transform _target;
     [SerializeField]
-    private GameObject _shot;
+    private GameObject _bullet;
     [SerializeField]
-    private Transform _startShot;
+    private Transform _pointStart;
+    [SerializeField]
+    private Transform _pointEnd;
+    [SerializeField]
+    private int _power = 100;
 
     private void OnTriggerStay(Collider other)
     {
@@ -17,14 +21,15 @@ public class Turret : MonoBehaviour
         {
             Vector3 Pos = _target.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(Pos);
-            transform.rotation = rotation;
-            InvokeRepeating("shot", 0f, 4f);
+            transform.rotation = rotation;          
+            Invoke("shot", 10f*Time.deltaTime);
         }
     }
     private void shot()
     {
-        Instantiate(_shot, _startShot.position, _startShot.rotation);
-        GetComponent<Rigidbody>().AddForce(Vector3.forward * 10, ForceMode.Impulse);
+        var a = Instantiate(_bullet, _pointStart.position, _pointStart.rotation);
+        a.GetComponent<Rigidbody>().AddForce(_pointStart.forward * _power, ForceMode.Impulse);
+        Destroy(a, 10f * Time.deltaTime);
     }
 
 } 

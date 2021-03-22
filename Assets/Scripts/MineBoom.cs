@@ -5,39 +5,41 @@ using UnityEngine;
 public class MineBoom : MonoBehaviour
 {
     [SerializeField]
-    private int _damage;
+    private int _damage = 1;
     [SerializeField]
-    private GameObject _explos;
+    public float _explosionRadius = 10;
     [SerializeField]
-    private Transform _boomhere;
-    private GameObject boom;
-
+    public float _power = 250;
+    [SerializeField]
+    private Transform _physicObjects;
+    private Rigidbody[] _physicObject;
     private void OnTriggerEnter(Collider other)
-     {
-        if (other.gameObject.CompareTag("Enemy"))
-         {
-            Instantiate(_explos, _boomhere.position, _boomhere.rotation);
-            var enemy = other.GetComponent<ZombieHealth>();
-             enemy.Hurt(_damage);
-            Destroy(gameObject);
-            Invoke("Test", 5f);
-        }
-         else if (other.gameObject.CompareTag("Player"))
-         {
-            Instantiate(_explos, _boomhere.position, _boomhere.rotation);
-            var player = other.GetComponent<PlayerHealth>();
-             player.HurtPlayer(_damage);
-            Destroy(gameObject);
-            Invoke("Test", 5f);
-        }
-        
-        
-    }
-    private void Test()
     {
-        if (boom != null)
-            Destroy(boom);
-        print("test");
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            BoomForce();
+            var enemy = other.GetComponent<Health>();
+            enemy.Hurt(_damage);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Player"))
+        {
+            BoomForce();
+            var enemy = other.GetComponent<Health>();
+            enemy.Hurt(_damage);
+            Destroy(gameObject);
+        }
+    }
+    private void BoomForce()
+    {
+        _physicObject = FindObjectsOfType(typeof(Rigidbody)) as Rigidbody[];
+        for (int i = 0; i < _physicObject.Length; i++)
+        {
+            if (Vector3.Distance(transform.position, _physicObject[i].transform.position) <= _explosionRadius)
+            {
+                _physicObject[i].AddForce((_physicObjects.position - transform.position).normalized * _power);
+            }
+        }
     }
 }
 

@@ -141,8 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _explos: {fileID: 993325713629505010, guid: 54a4bf081efe66044a33559c265a6e8a, type: 3}
-  _boomhere: {fileID: 6373402755255478726}
+  _explosionRadius: 2
+  _power: 2500
+  _physicObjects: {fileID: 943438224336481081, guid: 7498c666bee4ea1418a12d7584192e70,
+    type: 3}
 --- !u!65 &6373402755255478728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,7 +156,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.4, y: 0.2, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6373402755255478729
 Rigidbody:

@@ -8,8 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float _speed = 5;
     [SerializeField]
     private Vector3 _direction;
-    [SerializeField]
-    private Transform _forward;
+
     [SerializeField]
     private Transform _left;
     [SerializeField]
