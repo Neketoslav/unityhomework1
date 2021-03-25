@@ -22,14 +22,14 @@ public class Turret : MonoBehaviour
             Vector3 Pos = _target.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(Pos);
             transform.rotation = rotation;          
-            Invoke("shot", 10f*Time.deltaTime);
+            Invoke(nameof(Shot), 10f*Time.deltaTime);
         }
     }
-    private void shot()
+    private void Shot()
     {
-        var a = Instantiate(_bullet, _pointStart.position, _pointStart.rotation);
-        a.GetComponent<Rigidbody>().AddForce(_pointStart.forward * _power, ForceMode.Impulse);
-        Destroy(a, 10f * Time.deltaTime);
+        var shot = Instantiate(_bullet, _pointStart.position, _pointStart.rotation);
+        shot.GetComponent<Rigidbody>().AddForce(_pointStart.forward * _power, ForceMode.Impulse);
+        Destroy(shot, 10f * Time.deltaTime);
     }
 
 } 

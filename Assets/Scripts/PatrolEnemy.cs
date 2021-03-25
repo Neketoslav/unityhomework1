@@ -21,7 +21,7 @@ public class PatrolEnemy : MonoBehaviour
     [SerializeField]
     private int _damage = 1;
 
-     void Start()
+       void Start()
     {
         _navMeshAgent.SetDestination(_waypoints[0].position);
     } 
