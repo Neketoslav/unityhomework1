@@ -18,15 +18,15 @@ public class MineBoom : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             BoomForce();
-            var enemy = other.GetComponent<Health>();
+            var enemy = other.GetComponent<ZombieHealth>();
             enemy.Hurt(_damage);
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Player"))
         {
             BoomForce();
-            var enemy = other.GetComponent<Health>();
-            enemy.Hurt(_damage);
+            var player = other.GetComponent<Health>();
+            player.Hurt(_damage);
             Destroy(gameObject);
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAnimations : MonoBehaviour
+/*public class ZombieAnimations : MonoBehaviour
 {
 
     private Animator _animationRun;
@@ -36,4 +36,4 @@ public class ZombieAnimations : MonoBehaviour
             _animationRun.SetTrigger("Run");
         }
     } 
-}
+}*/

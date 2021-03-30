@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField]
+    private int _health;
 
     public void Hurt(int damage)
     {
@@ -17,4 +18,6 @@ public class ZombieHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
+

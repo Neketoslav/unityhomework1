@@ -20,21 +20,21 @@ public class PatrolEnemy : MonoBehaviour
     private float _speed = 10f;
     [SerializeField]
     private int _damage = 1;
+    private Animator _animationRun;
 
-       void Start()
+    void Start()
     {
+        _animationRun = GetComponent<Animator>();
         _navMeshAgent.SetDestination(_waypoints[0].position);
     } 
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, _target.transform.position) < _watchArea)
+        if (Vector3.Distance(transform.position, _target.transform.position) <= _watchArea)
         {
-            if (Vector3.Distance(transform.position, _target.transform.position) > _attackRange)
-            {
-                transform.LookAt(_target.position);
-                transform.Translate(new Vector3(0, 0, _speed * Time.deltaTime));
-            }
+            _animationRun.SetTrigger("Run");
+            transform.LookAt(_target.position);
+            transform.Translate(new Vector3(0, 0, _speed * Time.deltaTime));          
         }
         else 
         {

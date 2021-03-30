@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class KeyOpenDoor : MonoBehaviour
 {
     [SerializeField]
     private GameObject door;
     private Animator _animator;
+    [SerializeField]
+    private TMP_Text _task1;
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class KeyOpenDoor : MonoBehaviour
         {
             var OpenDoor = _animator.GetBool("OpenDoor");
             _animator.SetBool("OpenDoor", !OpenDoor);
+            _task1.fontStyle = FontStyles.Strikethrough;
             Destroy(gameObject);
         }
     }
