@@ -6,12 +6,15 @@ using TMPro;
 public class Finish : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text _task3;
+    private TMP_Text _taskThree;
+    [SerializeField]
+    private GameObject _win;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _task3.fontStyle = FontStyles.Strikethrough;
+            _taskThree.fontStyle = FontStyles.Strikethrough;
+            _win.SetActive(true);
         }
     }
 }

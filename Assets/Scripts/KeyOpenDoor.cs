@@ -19,8 +19,8 @@ public class KeyOpenDoor : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            var OpenDoor = _animator.GetBool("OpenDoor");
-            _animator.SetBool("OpenDoor", !OpenDoor);
+            var openDoor = _animator.GetBool("OpenDoor");
+            _animator.SetBool("OpenDoor", !openDoor);
             _task1.fontStyle = FontStyles.Strikethrough;
             Destroy(gameObject);
         }
